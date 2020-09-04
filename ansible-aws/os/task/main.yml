@@ -1,0 +1,19 @@
+---
+# tasks file for os
+- name: Instance launch
+  ec2:
+     key_name: "{{ key }}"
+     instance_type: "{{ os }}"
+     image: "{{ ami }}"
+     wait: yes
+     count: "{{ scale }}"
+     vpc_subnet_id: "{{ subnet }}"
+     assign_public_ip: yes
+     region: "{{ az }}"
+     state: present
+     group_id: "{{ sg }}"
+     aws_access_key: "{{ access_key }}"
+     aws_secret_key: "{{ secret_key }}"
+
+- name: "refresh inventory"
+  meta: refresh_inventory

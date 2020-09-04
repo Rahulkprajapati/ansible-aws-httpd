@@ -1,0 +1,4 @@
+---
+# vars file for webserver
+dir: "/var/www/ansible"
+httpPort: 8080

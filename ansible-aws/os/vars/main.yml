@@ -1,0 +1,12 @@
+---
+# vars file for os
+
+key: "mycloudkey1"
+subnet: "subnet-04fda2901ecedf164"
+az: "ap-south-1"
+scale: 1
+sg: "sg-01255c22f4701a006"
+os: "t2.micro"
+ami: "ami-0ebc1ac48dfd14136"
+access_key: "AKIAS2GGHJGJGJKKJH567"
+secret_key: "vhdsadbjkbsubfuibi;webubfibfu"

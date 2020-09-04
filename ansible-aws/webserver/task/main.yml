@@ -1,0 +1,30 @@
+---
+# tasks file for webserver
+
+
+- name: package  httpd
+  package:
+    name: "httpd"
+    state: "present"
+  register: status
+
+- name: Creating  Directory
+  file:
+    state: directory
+    dest: "{{ dir }}"
+  register: name_dir
+  tags: webgit
+
+- name: Conf for apache server
+  template:
+    dest: "/etc/httpd/conf.d/ansible.conf"
+    src: "templates/awsansible.conf.j2"
+  when: status.rc == 0
+  notify: httpd service
+
+- name: Copy web page from url
+  get_url:
+    dest: "{{ dir }}"
+    url: "https://raw.githubusercontent.com/Rahulkprajapati/Terraformwebpage/master/index.html"
+  when: name_dir.failed == false
+
